@@ -1,0 +1,14 @@
+.article {
+
+    width: 50wv;
+    height: auto;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.comment {
+
+    float: right;
+} 

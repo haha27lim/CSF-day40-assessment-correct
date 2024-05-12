@@ -1,0 +1,25 @@
+<div style="display: flex; align-items: center;">
+  <h2 style="margin-right:10px ;">Search Result</h2>
+  <button (click)="onBackButton()">Back</button>
+</div>
+
+<table >
+    <ng-container *ngIf="reviews.length > 0; else noResults">
+      <tr *ngFor="let review of reviews" >
+        <td><img [src]="review.image ? review.image : '../../assets/placeholder.jpg'" alt="{{ review.title }}" width="100%"></td>
+        <td class="article">
+          <a href="{{ review.reviewURL }}" target="_blank">{{ review.title }}&nbsp;&nbsp;&nbsp;|{{ review.rating }}</a>
+          <p>{{ review.headline }}</p>
+          <p>{{ review.summary }}</p>
+          <p>Comments: {{ review.commentCount }}</p>
+          <button class="comment" (click)="onCommentClick(review)">Comment</button>
+        </td>
+      </tr>
+    </ng-container>
+    <ng-template #noResults>
+      <tr>
+        <td>Your search produces no result.</td>
+      </tr>
+    </ng-template>
+</table>
+

@@ -1,0 +1,36 @@
+<h2>Post Comment for {{ title }}</h2>
+
+<form [formGroup]="commentForm" (ngSubmit)="saveComment()">
+    <table>
+      <tr>
+        <td><label>Name: </label></td>
+        <td><input type="text" size="30" formControlName="name"></td>
+      </tr>
+      <tr *ngIf="commentForm.invalid && (commentForm.dirty || commentForm.touched)">
+        <td></td>
+        <td class="error">Name is required and should be at least 3 characters long.</td>
+      </tr>
+      <tr>
+        <td><label>Rating: </label></td>
+        <td>
+          <input type="number" size="30" min="1" max="5" formControlName="rating">
+          <div *ngIf="commentForm.invalid && (commentForm.dirty || commentForm.touched)" class="error">
+            Rating from 1 to 5
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Comment: </label></td>
+        <td><textarea id="comment" placeholder="Type here" formControlName="comment"></textarea></td>
+      </tr>
+      <tr *ngIf="commentForm.invalid && (commentForm.dirty || commentForm.touched)">
+        <td></td>
+        <td class="error">Comment is required.</td>
+      </tr>
+      <tr>
+        <td><button type="button" (click)="onBackClick()">Back</button></td>
+        <td><button type="submit" [disabled]="commentForm.invalid">Post</button></td>
+      </tr>
+    </table>
+</form>
+  
